@@ -9,7 +9,6 @@ from books_recommender.pipeline.training_pipeline import TrainingPipeline
 from books_recommender.exception.exception_handler import AppException
 
 
-
 class Recommendation:
     def __init__(self,app_config = AppConfiguration()):
         try:
