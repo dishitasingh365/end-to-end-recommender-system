@@ -40,8 +40,7 @@ class Recommendation:
             return poster_url
         
         except Exception as e:
-            raise AppException(e, sys) from e
-        
+            raise AppException(e, sys) from e 
 
     
     def recommend_book(self,book_name):
@@ -111,7 +110,7 @@ if __name__ == "__main__":
     if st.button('Train Recommender System'):
         obj.train_engine()
 
-    book_names = pickle.load(open(os.path.join('templates','book_names.pkl') ,'rb'))
+    book_names = pickle.load(open(obj.recommendation_config.book_names_serialized_objects, 'rb'))
     selected_books = st.selectbox(
         "Type or select a book from the dropdown",
         book_names)

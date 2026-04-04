@@ -130,21 +130,28 @@ class AppConfiguration:
             data_validation_config = self.configs_info['data_validation_config']
             trained_model_name = model_trainer_config['trained_model_name']
             artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+
             trained_model_dir = os.path.join(artifacts_dir, model_trainer_config['trained_model_dir'])
-            poster_api = recommendation_config['poster_api_url']
-            
 
-            book_name_serialized_objects = os.path.join(artifacts_dir, data_validation_config['serialized_objects_dir'], 'book_names.pkl')
-            book_pivot_serialized_objects = os.path.join(artifacts_dir, data_validation_config['serialized_objects_dir'], 'book_pivot.pkl')
-            final_rating_serialized_objects = os.path.join(artifacts_dir, data_validation_config['serialized_objects_dir'], 'final_rating.pkl')
+            book_names_serialized_objects = recommendation_config['book_names_serialized_objects']
+            book_pivot_serialized_objects = os.path.join(
+                artifacts_dir,
+                data_validation_config['serialized_objects_dir'],
+                'book_pivot.pkl'
+            )
+            final_rating_serialized_objects = os.path.join(
+                artifacts_dir,
+                data_validation_config['serialized_objects_dir'],
+                'final_rating.pkl'
+            )
 
-            trained_model_path = os.path.join(trained_model_dir,trained_model_name)
-          
+            trained_model_path = os.path.join(trained_model_dir, trained_model_name)
+
             response = ModelRecommendationConfig(
-                book_name_serialized_objects = book_name_serialized_objects,
-                book_pivot_serialized_objects = book_pivot_serialized_objects,
-                final_rating_serialized_objects = final_rating_serialized_objects,
-                trained_model_path = trained_model_path
+                book_names_serialized_objects=book_names_serialized_objects,
+                book_pivot_serialized_objects=book_pivot_serialized_objects,
+                final_rating_serialized_objects=final_rating_serialized_objects,
+                trained_model_path=trained_model_path
             )
 
             logging.info(f"Model Recommendation Config: {response}")
